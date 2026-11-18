@@ -5,6 +5,7 @@ const MODULES = [
   {id:4,key:'Module 4 · Service',en:'Module 4: Service',ar:'الوحدة الرابعة: الخدمة',introEn:'Customer service, fares, lost property, complaints and safety.',introAr:'خدمة العملاء والأجور والمفقودات والشكاوى والسلامة.'}
 ];
 const ANSWERS = window.SUGGESTED_ANSWERS || {};
+const GUIDE = window.COURSE_GUIDE || {};
 const questionList=document.querySelector('#question-list');
 const moduleIndex=Number(document.body.dataset.module||0);
 const currentModule=MODULES.find(m=>m.id===moduleIndex);
@@ -25,6 +26,12 @@ function renderQuestion(q,index){
   const answerHtml=`<details class="answer"><summary><span lang="en" dir="ltr">Show answer</span><span lang="ar" dir="rtl">إظهار الإجابة</span></summary><div class="answer-body"><h3><span lang="en" dir="ltr">Answer</span><span lang="ar" dir="rtl">الإجابة</span></h3>${bilingual(answer.en,answer.ar,'answer-text')}${answer.explanationEn?`<h4><span lang="en" dir="ltr">Explanation</span><span lang="ar" dir="rtl">التوضيح</span></h4>${bilingual(answer.explanationEn,answer.explanationAr||'', 'explanation-text')}`:''}</div></details>`;
   return `<article class="question-card" id="${esc(q.id)}"><div class="meta"><span>Q${index+1} / السؤال ${index+1}</span><span>Course page / صفحة المادة ${esc(q.page)}</span></div><div class="question-prompt"><span class="language-label">Question / السؤال</span>${bilingual(q.en,q.ar,'question-text')}</div>${choices}<div class="actions">${q.options?`<button class="check-button" data-check="${esc(q.id)}">Check / تحقّق</button><output class="result" id="result-${esc(q.id)}" aria-live="polite"></output>`:''}</div>${answerHtml}</article>`;
 }
+function renderGuide(){
+  const target=document.querySelector('#guide-list');
+  if(!target||!currentModule)return;
+  const topics=GUIDE[currentModule.id]||[];
+  target.innerHTML=topics.map((topic,i)=>`<article class="guide-card"><div class="meta"><span>Topic ${i+1} / الموضوع ${i+1}</span><span>Course pages / صفحات المادة ${esc(topic.pages)}</span></div><h3><span lang="en" dir="ltr">${esc(topic.en)}</span><span lang="ar" dir="rtl">${esc(topic.ar)}</span></h3>${bilingual(topic.enText,topic.arText,'guide-text')}</article>`).join('');
+}
 function renderModule(){
   if(!currentModule||!questionList)return;
   document.title=`${currentModule.en} / ${currentModule.ar} | Taxi & PHC Practice`;
@@ -35,6 +42,7 @@ function renderModule(){
   const items=QUESTION_BANK.filter(q=>q.module===currentModule.key);
   document.querySelector('#question-count').textContent=`${items.length} questions / ${items.length} سؤالاً`;
   questionList.innerHTML=items.map(renderQuestion).join('');
+  renderGuide();
   document.querySelectorAll('[data-note]').forEach(el=>{el.value=localStorage.getItem('note-'+el.dataset.note)||'';el.addEventListener('input',()=>localStorage.setItem('note-'+el.dataset.note,el.value));});
   document.querySelectorAll('[data-check]').forEach(button=>button.addEventListener('click',()=>checkAnswer(button.dataset.check)));
 }
