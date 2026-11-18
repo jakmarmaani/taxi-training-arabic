@@ -1,34 +1,25 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#123b36">
-  <title>تدريب سائقي الأجرة والنقل الخاص | Taxi & PHC Practice</title>
+  <title>Taxi & PHC Training | تدريب التاكسي والنقل الخاص</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header class="topbar">
-    <div class="brand"><span class="brand-mark">🚕</span><div><strong>تدريب سائقي الأجرة والنقل الخاص</strong><small>Taxi & Private Hire Car Practice</small></div></div>
-    <button id="language-toggle" class="language-toggle" type="button" aria-label="Change language">English</button>
-  </header>
+<body data-page="home">
+  <header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">🚕</span><span><strong>Taxi & Private Hire Training</strong><small>تدريب سائقي الأجرة والنقل الخاص</small></span></a></header>
   <main>
     <section class="intro">
-      <p class="eyebrow" data-i18n="eyebrow">مراجعة تدريب إدنبرة</p>
-      <h1 data-i18n="title">تدرّب على الأسئلة</h1>
-      <p data-i18n="intro">أسئلة للمراجعة مستخرجة من ملفات التدريب المرفقة. اختر إجابة أو اكتب ملاحظاتك، ثم اكشف الإجابة المرجعية عند توفرها.</p>
-      <div class="notice" data-i18n="notice">ملاحظة: هذه المادة مبنية على دليل تدريبي إصدار 2020. تحقّق من شروط الترخيص الحالية قبل الاعتماد عليها في اختبار رسمي أو عمل فعلي.</div>
+      <p class="eyebrow">Edinburgh Taxi & PHC Study Guide / دليل دراسة التاكسي وسيارات النقل الخاصة في إدنبرة</p>
+      <h1>Questions and answers<br><span lang="ar" dir="rtl">الأسئلة والإجابات</span></h1>
+      <p lang="en" dir="ltr">Choose a module to study its questions and answers in English and Arabic. Each module opens on its own page.</p>
+      <p lang="ar" dir="rtl">اختر وحدة لدراسة أسئلتها وإجاباتها بالإنجليزية والعربية. لكل وحدة صفحة مستقلة.</p>
+      <div class="notice"><span lang="en" dir="ltr">Study aid based on the supplied City of Edinburgh Council training material, Issue 1 (2020). Check current licensing rules before using answers for formal training.</span><span lang="ar" dir="rtl">مادة مساعدة للدراسة مبنية على دليل مجلس مدينة إدنبرة المرفق، الإصدار الأول (2020). تحقّق من شروط الترخيص الحالية قبل استخدام الإجابات في تدريب رسمي.</span></div>
     </section>
-    <section class="toolbar" aria-label="Question filters">
-      <label class="search"><span data-i18n="searchLabel">بحث</span><input id="search" type="search" placeholder="ابحث في الأسئلة…"></label>
-      <label class="filter"><span data-i18n="moduleLabel">الوحدة</span><select id="module-filter"><option value="all" data-i18n="allModules">كل الوحدات</option></select></label>
-      <label class="filter"><span data-i18n="typeLabel">النوع</span><select id="type-filter"><option value="all" data-i18n="allTypes">الكل</option><option value="choice" data-i18n="quizOnly">اختيار من متعدد</option><option value="written" data-i18n="writtenOnly">إجابة كتابية</option></select></label>
-    </section>
-    <div class="progress-row"><span id="count-label"></span><span id="score-label"></span></div>
-    <section id="question-list" class="question-list" aria-live="polite"></section>
-    <footer data-i18n="footer">للمراجعة التعليمية. راجع النسخة الأصلية وشروط المجلس الحالية عند الحاجة.</footer>
+    <section class="module-grid" id="module-cards" aria-label="Training modules / وحدات التدريب"></section>
+    <footer><span lang="en" dir="ltr">Written notes are saved only in this browser.</span><span lang="ar" dir="rtl">تُحفظ الإجابات الكتابية في هذا المتصفح فقط.</span></footer>
   </main>
-  <script src="questions.js"></script>
-  <script src="app.js"></script>
+  <script src="questions.js"></script><script src="answers.js"></script><script src="app.js"></script>
 </body>
 </html>
