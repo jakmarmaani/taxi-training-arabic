@@ -36,7 +36,8 @@ window.QUESTION_BANK.push(
   {id:"e15",module:"Module 5 · English Practice",page:'Revision',kind:'choice',en:"What is the professional way to respond after making a genuine service mistake?",ar:'',options:[["Apologise, help resolve the issue and learn from it.",""],["Deny it and blame the passenger.",""],["Argue until the passenger leaves.",""],["Ignore the complaint.",""]],answer:0,feedback:"Review the relevant course topic and the current Council licensing conditions."}
 );
 
-\n// Add English-only copies of every question in the four bilingual sections.
+
+// Add English-only copies of every question in the four bilingual sections.
 (function(){
   const source = window.QUESTION_BANK.filter(q => /^Module [1-4] ·/.test(q.module));
   const section = 'Module 5 · English Practice';
