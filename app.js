@@ -1,59 +1,46 @@
-const UI = {
-  ar: {eyebrow:'مراجعة تدريب إدنبرة',title:'تدرّب على الأسئلة',intro:'أسئلة للمراجعة مستخرجة من ملفات التدريب المرفقة. اختر إجابة أو اكتب ملاحظاتك، ثم اكشف الإجابة المرجعية عند توفرها.',notice:'ملاحظة: هذه المادة مبنية على دليل تدريبي إصدار 2020. تحقّق من شروط الترخيص الحالية قبل الاعتماد عليها في اختبار رسمي أو عمل فعلي.',searchLabel:'بحث',searchPlaceholder:'ابحث في الأسئلة…',moduleLabel:'الوحدة',allModules:'كل الوحدات',typeLabel:'النوع',allTypes:'الكل',quizOnly:'اختيار من متعدد',writtenOnly:'إجابة كتابية',footer:'للمراجعة التعليمية. راجع النسخة الأصلية وشروط المجلس الحالية عند الحاجة.',showing:'عرض',of:'من',questions:'سؤالاً',score:'النتيجة',check:'تحقّق من الإجابة',showAnswer:'عرض الإجابة المرجعية',hideAnswer:'إخفاء الإجابة المرجعية',writeHint:'اكتب إجابتك هنا. تُحفظ هذه الملاحظات في هذا المتصفح فقط.',choose:'اختر إجابة أولاً.',right:'إجابة صحيحة',wrong:'إجابة غير صحيحة',answer:'الإجابة الصحيحة',noResults:'لا توجد أسئلة تطابق بحثك.',written:'إجابة كتابية',choice:'اختيار من متعدد',source:'صفحة المادة'},
-  en: {eyebrow:'Edinburgh training review',title:'Practise the questions',intro:'Review questions drawn from the supplied training files. Choose an answer or write notes, then reveal the reference answer where one is available.',notice:'Note: this material is based on a 2020 training guide. Check current licensing conditions before relying on it for a formal assessment or work.',searchLabel:'Search',searchPlaceholder:'Search questions…',moduleLabel:'Module',allModules:'All modules',typeLabel:'Type',allTypes:'All',quizOnly:'Multiple choice',writtenOnly:'Written response',footer:'For study and revision. Refer to the original material and current Council conditions when needed.',showing:'Showing',of:'of',questions:'questions',score:'Score',check:'Check answer',showAnswer:'Show reference answer',hideAnswer:'Hide reference answer',writeHint:'Write your answer here. Notes are saved in this browser only.',choose:'Choose an answer first.',right:'Correct',wrong:'Not correct',answer:'Correct answer',noResults:'No questions match your search.',written:'Written response',choice:'Multiple choice',source:'Course page'}
-};
-let lang='ar';
-const answers=new Map();
+const MODULES = [
+  {id:1,key:'Module 1 · Licensing',en:'Module 1: Licensing',ar:'الوحدة الأولى: الترخيص',introEn:'Licences, authorised inspections and the taxi/PHC comparison.',introAr:'الرخص والتفتيش المخوّل والمقارنة بين التاكسي وسيارة النقل الخاصة.'},
+  {id:2,key:'Module 2 · Vehicle',en:'Module 2: Vehicle',ar:'الوحدة الثانية: المركبة',introEn:'Vehicle condition, safety checks, signage and damage reporting.',introAr:'حالة المركبة وفحوصات السلامة واللافتات والإبلاغ عن الأضرار.'},
+  {id:3,key:'Module 3 · Driver',en:'Module 3: Driver',ar:'الوحدة الثالثة: السائق',introEn:'Driver wellbeing, disability access and respectful assistance.',introAr:'سلامة السائق وإتاحة الخدمة لذوي الإعاقة وتقديم المساعدة باحترام.'},
+  {id:4,key:'Module 4 · Service',en:'Module 4: Service',ar:'الوحدة الرابعة: الخدمة',introEn:'Customer service, fares, lost property, complaints and safety.',introAr:'خدمة العملاء والأجور والمفقودات والشكاوى والسلامة.'}
+];
+const ANSWERS = window.SUGGESTED_ANSWERS || {};
 const questionList=document.querySelector('#question-list');
-const moduleFilter=document.querySelector('#module-filter');
-const typeFilter=document.querySelector('#type-filter');
-const search=document.querySelector('#search');
-const tr=key=>UI[lang][key];
-function setupLanguage(){
-  document.documentElement.lang=lang;
-  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-  document.body.dataset.lang=lang;
-  document.querySelector('#language-toggle').textContent=lang==='ar'?'English':'العربية';
-  document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=tr(el.dataset.i18n));
-  search.placeholder=tr('searchPlaceholder');
-  const modules=[...new Set(QUESTION_BANK.map(q=>q.module))];
-  moduleFilter.innerHTML=`<option value="all">${tr('allModules')}</option>`+modules.map((m,i)=>`<option value="${i}">${lang==='ar'?m.replace('Module','الوحدة'):m}</option>`).join('');
-  render();
+const moduleIndex=Number(document.body.dataset.module||0);
+const currentModule=MODULES.find(m=>m.id===moduleIndex);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const bilingual=(en,ar,kind='text')=>`<div class="bilingual ${kind}"><p lang="en" dir="ltr">${esc(en)}</p><p lang="ar" dir="rtl">${esc(ar)}</p></div>`;
+function moduleCards(){
+  const target=document.querySelector('#module-cards');
+  if(!target)return;
+  target.innerHTML=MODULES.map(m=>{const count=QUESTION_BANK.filter(q=>q.module===m.key).length;return `<a class="module-card" href="module-${m.id}.html"><span class="module-number">${m.id}</span><div><h2 lang="en" dir="ltr">${m.en}</h2><h2 lang="ar" dir="rtl">${m.ar}</h2><p lang="en" dir="ltr">${m.introEn}</p><p lang="ar" dir="rtl">${m.introAr}</p><strong>${count} questions / ${count} سؤالاً</strong></div></a>`}).join('');
 }
-function visibleQuestions(){
-  const modules=[...new Set(QUESTION_BANK.map(q=>q.module))];
-  const query=search.value.trim().toLocaleLowerCase();
-  return QUESTION_BANK.filter(q=>(moduleFilter.value==='all'||q.module===modules[Number(moduleFilter.value)])&&(typeFilter.value==='all'||q.kind===typeFilter.value)&&(!query||(q.en+' '+q.ar+' '+q.module).toLocaleLowerCase().includes(query)));
+function answerFor(q){
+  if(q.options){const option=q.options[q.answer];return {en:option[0],ar:option[1],explanationEn:q.feedback||'',explanationAr:q.feedbackAr||q.feedback||''};}
+  return ANSWERS[q.id]||{en:'Suggested answer: review the matching course page and current licensing conditions.',ar:'إجابة مقترحة: راجع صفحة المادة ذات الصلة وشروط الترخيص الحالية.'};
 }
-function render(){
-  const items=visibleQuestions();
-  document.querySelector('#count-label').textContent=`${tr('showing')} ${items.length} ${tr('of')} ${QUESTION_BANK.length} ${tr('questions')}`;
-  document.querySelector('#score-label').textContent=`${tr('score')}: ${[...answers.values()].filter(Boolean).length}/${answers.size}`;
-  if(!items.length){questionList.innerHTML=`<div class="empty">${tr('noResults')}</div>`;return;}
-  questionList.innerHTML=items.map((q,index)=>{
-    const module=lang==='ar'?q.module.replace('Module','الوحدة'):q.module;
-    const options=q.options?`<div class="options">${q.options.map((option,i)=>`<label class="option"><input type="radio" name="${q.id}" value="${i}"><span>${lang==='ar'?option[1]:option[0]}</span></label>`).join('')}</div>`:`<div class="written"><textarea data-note="${q.id}" placeholder="${tr('writeHint')}"></textarea></div>`;
-    const answer=q.options?`${tr('answer')}: ${lang==='ar'?q.options[q.answer][1]:q.options[q.answer][0]}. `:'';
-    const feedback=lang==='ar'?(q.feedbackAr||q.feedback):q.feedback;
-    return `<article class="card"><div class="card-head"><span class="tag">${module} · ${q.kind==='choice'?tr('choice'):tr('written')}</span><span class="source">${tr('source')} ${q.page}</span></div><h2 class="question">${index+1}. ${lang==='ar'?q.ar:q.en}</h2>${options}<div class="actions">${q.options?`<button class="primary" data-check="${q.id}">${tr('check')}</button><span class="result" id="result-${q.id}"></span>`:''}<button class="secondary" data-reveal="${q.id}">${tr('showAnswer')}</button></div><div class="feedback" id="feedback-${q.id}" hidden>${answer}${feedback}</div></article>`;
-  }).join('');
+function renderQuestion(q,index){
+  const answer=answerFor(q);
+  const choices=q.options?`<fieldset class="options"><legend>Choose one / اختر إجابة واحدة</legend>${q.options.map((o,i)=>`<label class="option"><input type="radio" name="${q.id}" value="${i}"><span><b lang="en" dir="ltr">${esc(o[0])}</b><b lang="ar" dir="rtl">${esc(o[1])}</b></span></label>`).join('')}</fieldset>`:`<label class="response-label"><span lang="en" dir="ltr">Your answer</span><span lang="ar" dir="rtl">إجابتك</span><textarea data-note="${q.id}" rows="3"></textarea></label>`;
+  const answerHtml=`<details class="answer"><summary><span lang="en" dir="ltr">Show answer</span><span lang="ar" dir="rtl">إظهار الإجابة</span></summary><div class="answer-body"><h3><span lang="en" dir="ltr">Answer</span><span lang="ar" dir="rtl">الإجابة</span></h3>${bilingual(answer.en,answer.ar,'answer-text')}${answer.explanationEn?`<h4><span lang="en" dir="ltr">Explanation</span><span lang="ar" dir="rtl">التوضيح</span></h4>${bilingual(answer.explanationEn,answer.explanationAr||'', 'explanation-text')}`:''}</div></details>`;
+  return `<article class="question-card" id="${esc(q.id)}"><div class="meta"><span>Q${index+1} / السؤال ${index+1}</span><span>Course page / صفحة المادة ${esc(q.page)}</span></div><div class="question-prompt"><span class="language-label">Question / السؤال</span>${bilingual(q.en,q.ar,'question-text')}</div>${choices}<div class="actions">${q.options?`<button class="check-button" data-check="${esc(q.id)}">Check / تحقّق</button><output class="result" id="result-${esc(q.id)}" aria-live="polite"></output>`:''}</div>${answerHtml}</article>`;
+}
+function renderModule(){
+  if(!currentModule||!questionList)return;
+  document.title=`${currentModule.en} / ${currentModule.ar} | Taxi & PHC Practice`;
+  const heading=document.querySelector('#module-title');
+  const intro=document.querySelector('#module-intro');
+  if(heading)heading.innerHTML=`<span lang="en" dir="ltr">${currentModule.en}</span><span lang="ar" dir="rtl">${currentModule.ar}</span>`;
+  if(intro)intro.innerHTML=`<p lang="en" dir="ltr">${currentModule.introEn}</p><p lang="ar" dir="rtl">${currentModule.introAr}</p>`;
+  const items=QUESTION_BANK.filter(q=>q.module===currentModule.key);
+  document.querySelector('#question-count').textContent=`${items.length} questions / ${items.length} سؤالاً`;
+  questionList.innerHTML=items.map(renderQuestion).join('');
   document.querySelectorAll('[data-note]').forEach(el=>{el.value=localStorage.getItem('note-'+el.dataset.note)||'';el.addEventListener('input',()=>localStorage.setItem('note-'+el.dataset.note,el.value));});
-  document.querySelectorAll('[data-check]').forEach(btn=>btn.addEventListener('click',()=>checkAnswer(btn.dataset.check)));
-  document.querySelectorAll('[data-reveal]').forEach(btn=>btn.addEventListener('click',()=>{const box=document.querySelector('#feedback-'+btn.dataset.reveal);box.hidden=!box.hidden;btn.textContent=box.hidden?tr('showAnswer'):tr('hideAnswer');}));
+  document.querySelectorAll('[data-check]').forEach(button=>button.addEventListener('click',()=>checkAnswer(button.dataset.check)));
 }
 function checkAnswer(id){
-  const q=QUESTION_BANK.find(item=>item.id===id);
-  const selected=document.querySelector(`input[name="${id}"]:checked`);
-  const result=document.querySelector('#result-'+id);
-  if(!selected){result.textContent=tr('choose');result.className='result';return;}
-  const correct=Number(selected.value)===q.answer;
-  answers.set(id,correct);
-  result.textContent=correct?tr('right'):tr('wrong');
-  result.className='result '+(correct?'correct':'incorrect');
-  document.querySelector('#score-label').textContent=`${tr('score')}: ${[...answers.values()].filter(Boolean).length}/${answers.size}`;
+  const q=QUESTION_BANK.find(item=>item.id===id);const selected=document.querySelector(`input[name="${id}"]:checked`);const output=document.querySelector(`#result-${id}`);
+  if(!selected){output.innerHTML='<span lang="en">Choose an answer first.</span><span lang="ar" dir="rtl">اختر إجابة أولاً.</span>';return;}
+  const right=Number(selected.value)===q.answer;output.className='result '+(right?'correct':'incorrect');output.innerHTML=right?'<span lang="en">Correct</span><span lang="ar" dir="rtl">إجابة صحيحة</span>':'<span lang="en">Not correct</span><span lang="ar" dir="rtl">إجابة غير صحيحة</span>';
 }
-document.querySelector('#language-toggle').addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';setupLanguage();});
-moduleFilter.addEventListener('change',render);
-typeFilter.addEventListener('change',render);
-search.addEventListener('input',render);
-setupLanguage();
+moduleCards();renderModule();
