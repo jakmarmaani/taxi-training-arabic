@@ -68,5 +68,61 @@ window.SUGGESTED_ANSWERS = {
   'm4-16': {
     en: 'Within 24 hours, if it cannot be returned to its owner without delay. This is the period stated in the supplied 2020 answer key; check current conditions.',
     ar: 'خلال 24 ساعة إذا تعذّرت إعادته إلى صاحبه دون تأخير. هذه هي المدة الواردة في مفتاح الإجابة لعام 2020؛ تحقّق من الشروط الحالية.'
-  }
+  },
+  'm1-10': {
+    en: 'Examples from the answer key: failure to meet application criteria (such as right to work, driving-licence duration or medical requirements); already disqualified; not fit and proper (for example, a police objection, upheld complaint or breach); applying in name only for someone else who would not qualify; unsuitable premises or public-order/safety concerns. The key also allows other good reasons.',
+    ar: 'أمثلة من مفتاح الإجابات: عدم استيفاء شروط الطلب (مثل حق العمل أو مدة حمل رخصة القيادة أو المتطلبات الطبية)؛ وجود حرمان سابق؛ عدم استيفاء معيار الصلاحية والجدارة بالثقة (مثل اعتراض الشرطة أو شكوى مؤيدة أو مخالفة)؛ تقديم الطلب بالاسم فقط لمصلحة شخص آخر غير مؤهل؛ أو عدم ملاءمة المقر أو وجود مخاوف على النظام أو السلامة العامة. ويذكر المفتاح أيضاً أسباباً وجيهة أخرى.'
+  },
+  'm2-03': {
+    en: 'A pass leads to a certificate and the next annual test booking. A minor fail may be passed after rectification within one hour. A significant defined defect requires a partial retest within 10 days; a significant non-defined defect requires a full retest within 10 days. A safety fail means the vehicle stays out of service until repaired and retested.',
+    ar: 'يؤدي النجاح إلى إصدار شهادة وحجز الفحص السنوي التالي. ويمكن اجتياز الإخفاق البسيط بعد إصلاح العيب خلال ساعة. ويتطلب العيب الكبير المحدد إعادة فحص جزئية خلال 10 أيام، بينما يتطلب العيب الكبير غير المحدد إعادة فحص كاملة خلال 10 أيام. أما إخفاق السلامة فيُبقي المركبة خارج الخدمة حتى إصلاحها وإعادة فحصها.'
+  },
+  'm2-04': {
+    en: 'Obtain prior Council approval, submit the required vehicle-licence variation, have the equipment fitted professionally and arrange inspection at the Licensing Hub. Check current licensing conditions and comply with data-protection law. Do not use or share camera images for commercial purposes or social media.',
+    ar: 'احصل على موافقة مسبقة من المجلس، وقدّم طلب التغيير المطلوب في رخصة المركبة، وركّب المعدات مهنياً، ورتّب فحصها في مركز الترخيص. تحقّق من شروط الترخيص الحالية والتزم بقانون حماية البيانات. لا تستخدم صور الكاميرات لأغراض تجارية ولا تنشرها على وسائل التواصل الاجتماعي.'
+  },
+  'm2-05': {
+    en: 'The plate shows the issuing authority, registration number, plate number, vehicle type, expiry date and maximum passenger capacity; taxi plates also show wheelchair accessibility. Keep it fitted, legible and in good condition. Report a theft to police immediately and replace stolen, lost or damaged plates by the next working day, as stated in the supplied guide.',
+    ar: 'تعرض اللوحة الجهة المُصدرة ورقم التسجيل ورقم اللوحة ونوع المركبة وتاريخ الانتهاء والحد الأقصى للركاب؛ وتوضح لوحات التاكسي أيضاً إمكانية الوصول بالكرسي المتحرك. أبقها مثبتة ومقروءة وبحالة جيدة. أبلغ الشرطة فوراً عن السرقة واستبدل اللوحات المسروقة أو المفقودة أو التالفة بحلول يوم العمل التالي، وفق الدليل المرفق.'
+  },
+  'm3-04': {
+    en: 'More than 25%; 95%; at least 6%; up to 20% (and up to 25% of fatal or serious accidents). These are the figures in the supplied answer key and should be treated as course material, not current statistics.',
+    ar: 'أكثر من 25٪؛ و95٪؛ وما لا يقل عن 6٪؛ وحتى 20٪ (وحتى 25٪ من الحوادث المميتة أو الخطيرة). هذه هي الأرقام الواردة في مفتاح الإجابات المرفق، وينبغي اعتبارها مادة تدريبية لا إحصاءات حالية.'
+  },
+  'm3-05': {
+    en: 'The table says drivers must wear a seatbelt when required, and passengers aged 14 or over must wear one if fitted. Children under 3 should use a child restraint; if none is available in a taxi/PHC, the child may travel unrestrained. Children aged 3–11 and under 135 cm should use the correct restraint; if one is unavailable, an adult belt may be used in the rear seat for a necessary, unexpected journey or where two child restraints prevent fitting a third. Children aged 12–13, and younger children over 135 cm, must wear an adult belt if fitted. Follow current law.',
+    ar: 'ينص الجدول على وجوب استخدام السائق لحزام الأمان عند انطباق القاعدة، وعلى استخدام الركاب بعمر 14 سنة فأكثر للحزام إذا كان مركباً. ينبغي للأطفال دون الثالثة استخدام مقعد الطفل؛ وإذا لم يتوفر في التاكسي أو PHC فيجوز للطفل السفر من دونه. وينبغي للأطفال من 3 إلى 11 سنة ممن يقل طولهم عن 135 سم استخدام المقعد المناسب؛ وإذا لم يتوفر، يمكن استخدام حزام البالغين في المقعد الخلفي عند الضرورة والرحلة غير المتوقعة أو إذا منعت مقاعد طفلين تثبيت مقعد ثالث. ويجب على الأطفال بعمر 12–13 سنة، والأصغر ممن يزيد طولهم على 135 سم، استخدام حزام البالغين إذا كان مركباً. اتبع القانون الحالي.'
+  },
+  'm4-17': {
+    en: 'Record the time of hire, pick-up point, destination, hirer’s name, vehicle licence and registration numbers, and driver details. Keep electronic or manual booking records available for inspection for at least six months.',
+    ar: 'سجّل وقت الحجز ونقطة الالتقاط والوجهة واسم المستأجر ورقم رخصة المركبة ورقم تسجيلها وبيانات السائق. احتفظ بسجلات الحجز الإلكترونية أو الورقية متاحة للتفتيش لمدة لا تقل عن ستة أشهر.'
+  },
+  'm4-18': {
+    en: 'Join and leave the queue safely and in order; avoid obstructing traffic, disturbing local residents or businesses, and unnecessary engine idling. Use the stance only for authorised hires, not parking. The answer key cites Taxi conditions 144 and 153–158. PHCs cannot use a taxi stance; the key cites PHC conditions 204, 205 and 228 for conduct near one.',
+    ar: 'ادخل الصف وغادره بأمان وبالترتيب؛ وتجنب إعاقة المرور أو إزعاج السكان والمتاجر أو ترك المحرك يعمل دون حاجة. استخدم الموقف للحجوزات المصرح بها فقط وليس لركن المركبة. يشير مفتاح الإجابة إلى شروط التاكسي 144 و153–158. ولا يجوز لسيارات PHC استخدام موقف التاكسي؛ ويشير المفتاح إلى شروط PHC 204 و205 و228 بشأن التصرف بالقرب منه.'
+  },
+  'm4-19': {
+    en: 'A hire within the licensed area should not be refused without reasonable cause. Assess the facts objectively, including safety, legality and whether the journey is within the licence. Never refuse because of a protected characteristic, prejudice or unwillingness to assist. The answer key points to Taxi conditions 110–112 and PHC conditions 191–193; consult the current conditions for examples.',
+    ar: 'لا ينبغي رفض طلب رحلة داخل منطقة الترخيص دون سبب معقول. قيّم الوقائع بموضوعية، بما في ذلك السلامة والقانون وما إذا كانت الرحلة ضمن نطاق الرخصة. لا ترفض بسبب خاصية محمية أو تحيز أو عدم الرغبة في تقديم المساعدة. يشير مفتاح الإجابة إلى شروط التاكسي 110–112 وشروط PHC 191–193؛ راجع الشروط الحالية لمعرفة الأمثلة.'
+  },
+  'm4-20': {
+    en: 'Display the approved fare table where passengers can see it. Metered fares include the authorised tariff elements and extras; do not exceed the approved amount. Before a PHC journey without a meter, tell the passenger the fare or how it will be calculated. Use the shortest practicable route unless the hirer instructs otherwise.',
+    ar: 'اعرض جدول الأجرة المعتمد في مكان يراه الركاب. تشمل أجرة العداد عناصر التعرفة والإضافات المعتمدة؛ ولا تتجاوز المبلغ المصرح به. قبل رحلة PHC بلا عداد، أبلغ الراكب بالأجرة أو بطريقة حسابها. اسلك أقصر طريق عملي ما لم يطلب الراكب غير ذلك.'
+  },
+  'm4-21': {
+    en: 'Before and during the hire, assess passenger behaviour, destination, time of day and surroundings. Keep a safe personal space, use booking-office records/support and available safety technology, and avoid escalating conflict. If threatened, assaulted or robbed, prioritise safety, contact police and preserve evidence. Do not chase someone or risk your life for money.',
+    ar: 'قبل الرحلة وأثناءها، قيّم سلوك الراكب والوجهة ووقت اليوم والمحيط. حافظ على مسافة شخصية آمنة، واستخدم سجلات مكتب الحجز ودعمه وتقنيات السلامة المتاحة، وتجنب تصعيد الخلاف. إذا تعرضت للتهديد أو الاعتداء أو السرقة، قدّم سلامتك واتصل بالشرطة واحفظ الأدلة. لا تطارد شخصاً ولا تخاطر بحياتك من أجل المال.'
+  },
+  'm1-11': {
+    en: 'For a vehicle: a suitable, roadworthy vehicle; registration documents in the applicant’s or day-to-day manager’s name; insurance for every driver available in the vehicle; and a full MOT and compliance test against local conditions. For a driver: a UK driving licence held for 12 months, conviction declarations unless protected, DVLA Group 2 medical fitness, a completed application and renewal submitted in time. The supplied answer key says renewals may be made up to six months before expiry.',
+    ar: 'للمركبة: أن تكون مناسبة وصالحة للسير؛ وأن تكون وثائق التسجيل باسم مقدم الطلب أو المدير اليومي؛ وأن يتوفر داخل المركبة تأمين لجميع السائقين؛ واجتياز فحص MOT وفحص المطابقة للشروط المحلية. للسائق: حمل رخصة قيادة بريطانية لمدة 12 شهراً، والتصريح بالإدانات ما لم تكن محمية، واستيفاء اللياقة الطبية للمجموعة الثانية لدى DVLA، وإكمال الطلب وتقديم التجديد في الوقت المناسب. يذكر مفتاح الإجابات أن التجديد يمكن تقديمه قبل انتهاء الرخصة بستة أشهر.'
+  },
+  'm3-06': {
+    en: 'A driver of a designated vehicle must carry a passenger in the wheelchair when required, carry it if the passenger prefers a seat, take reasonable steps for safety and comfort, and provide reasonable assistance. A passenger with an assistance dog must not be refused because of the dog. No extra charge may be made for disability-related assistance or the assistance dog. Any exemption must meet current rules and be evidenced as required.',
+    ar: 'يجب على سائق المركبة المخصصة نقل الراكب وهو على الكرسي المتحرك عند انطباق الواجب، ونقل الكرسي إذا فضّل الراكب الجلوس على المقعد، واتخاذ خطوات معقولة للسلامة والراحة وتقديم مساعدة معقولة. لا يجوز رفض الراكب بسبب كلب المساعدة. ولا يجوز فرض رسوم إضافية بسبب المساعدة المتعلقة بالإعاقة أو كلب المساعدة. يجب أن يستوفي أي إعفاء القواعد الحالية وأن يثبت بالطريقة المطلوبة.'
+  },
+  'm4-22': {
+    en: 'There is no definitive example list in the supplied answer key. Discuss only objective reasons such as an immediate safety risk, no safe passenger capacity, an unlawful request, or a journey outside the licence where no exception applies. These are discussion examples, not an authoritative legal list. Check the current conditions and never use a protected characteristic or prejudice as a reason.',
+    ar: 'لا توجد قائمة أمثلة نهائية في مفتاح الإجابات المرفق. ناقش الأسباب الموضوعية فقط، مثل خطر فوري على السلامة أو عدم توفر سعة آمنة للركاب أو طلب غير قانوني أو رحلة خارج نطاق الرخصة لا ينطبق عليها استثناء. هذه أمثلة للنقاش وليست قائمة قانونية معتمدة. تحقّق من الشروط الحالية ولا تستخدم خاصية محمية أو تحيزاً سبباً للرفض.'
+  },
 };
