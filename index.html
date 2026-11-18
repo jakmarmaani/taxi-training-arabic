@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b36">
+  <title>تدريب سائقي الأجرة والنقل الخاص | Taxi & PHC Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">🚕</span><div><strong>تدريب سائقي الأجرة والنقل الخاص</strong><small>Taxi & Private Hire Car Practice</small></div></div>
+    <button id="language-toggle" class="language-toggle" type="button" aria-label="Change language">English</button>
+  </header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow" data-i18n="eyebrow">مراجعة تدريب إدنبرة</p>
+      <h1 data-i18n="title">تدرّب على الأسئلة</h1>
+      <p data-i18n="intro">أسئلة للمراجعة مستخرجة من ملفات التدريب المرفقة. اختر إجابة أو اكتب ملاحظاتك، ثم اكشف الإجابة المرجعية عند توفرها.</p>
+      <div class="notice" data-i18n="notice">ملاحظة: هذه المادة مبنية على دليل تدريبي إصدار 2020. تحقّق من شروط الترخيص الحالية قبل الاعتماد عليها في اختبار رسمي أو عمل فعلي.</div>
+    </section>
+    <section class="toolbar" aria-label="Question filters">
+      <label class="search"><span data-i18n="searchLabel">بحث</span><input id="search" type="search" placeholder="ابحث في الأسئلة…"></label>
+      <label class="filter"><span data-i18n="moduleLabel">الوحدة</span><select id="module-filter"><option value="all" data-i18n="allModules">كل الوحدات</option></select></label>
+      <label class="filter"><span data-i18n="typeLabel">النوع</span><select id="type-filter"><option value="all" data-i18n="allTypes">الكل</option><option value="choice" data-i18n="quizOnly">اختيار من متعدد</option><option value="written" data-i18n="writtenOnly">إجابة كتابية</option></select></label>
+    </section>
+    <div class="progress-row"><span id="count-label"></span><span id="score-label"></span></div>
+    <section id="question-list" class="question-list" aria-live="polite"></section>
+    <footer data-i18n="footer">للمراجعة التعليمية. راجع النسخة الأصلية وشروط المجلس الحالية عند الحاجة.</footer>
+  </main>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
