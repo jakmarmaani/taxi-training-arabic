@@ -35,3 +35,19 @@ window.QUESTION_BANK.push(
   {id:"e14",module:"Module 5 · English Practice",page:'Revision',kind:'choice',en:"Which records does the course say a PHC booking log should contain?",ar:'',options:[["Booking and journey details, hirer, vehicle and driver information.",""],["Only the passenger’s first name.",""],["Only the fare total.",""],["No written or electronic record.",""]],answer:0,feedback:"Review the relevant course topic and the current Council licensing conditions."},
   {id:"e15",module:"Module 5 · English Practice",page:'Revision',kind:'choice',en:"What is the professional way to respond after making a genuine service mistake?",ar:'',options:[["Apologise, help resolve the issue and learn from it.",""],["Deny it and blame the passenger.",""],["Argue until the passenger leaves.",""],["Ignore the complaint.",""]],answer:0,feedback:"Review the relevant course topic and the current Council licensing conditions."}
 );
+
+\n// Add English-only copies of every question in the four bilingual sections.
+(function(){
+  const source = window.QUESTION_BANK.filter(q => /^Module [1-4] ·/.test(q.module));
+  const section = 'Module 5 · English Practice';
+  const copies = source.map(q => ({
+    ...q,
+    id: 'en-copy-' + q.id,
+    module: section,
+    ar: '',
+    options: q.options.map(option => [option[0], '']),
+    sourceAnswerId: q.id,
+    sourceCopy: true
+  }));
+  window.QUESTION_BANK.push(...copies);
+})();
